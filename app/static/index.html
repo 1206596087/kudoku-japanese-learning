@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f6f7f3">
+  <meta name="description" content="从听懂一句话开始，逐步掌握日语表达。">
+  <title>句读 · 日语学习</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">跳到主要内容</a>
+  <div class="auth-gate" id="auth-gate" hidden>
+    <form class="auth-card" id="auth-form" novalidate>
+      <span class="brand-mark" aria-hidden="true">句</span>
+      <p class="eyebrow" id="auth-eyebrow">私人学习空间</p>
+      <h1 id="auth-title">创建你的账号</h1>
+      <p class="lead" id="auth-copy">学习记录只保存在你的私人账号中。</p>
+      <label class="field-label">用户名<input id="auth-username" autocomplete="username" minlength="3" maxlength="40" aria-describedby="auth-error auth-hint" required></label>
+      <label class="field-label">密码<input id="auth-password" type="password" autocomplete="new-password" minlength="8" maxlength="128" aria-describedby="auth-error auth-hint" required></label>
+      <button class="primary-button" id="auth-submit" type="submit">创建并进入</button>
+      <p class="auth-error" id="auth-error" role="alert" hidden></p>
+      <p class="subtle" id="auth-hint">密码至少8位，请妥善保存。</p>
+    </form>
+  </div>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="主导航">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">句</span>
+        <div><strong>句读</strong><small>从一句话开始</small></div>
+      </div>
+      <nav class="side-nav">
+        <button class="nav-item is-active" data-route="home" aria-label="首页">
+          <span class="nav-icon" aria-hidden="true">⌂</span><span>首页</span>
+        </button>
+        <button class="nav-item" data-route="learn" aria-label="学习">
+          <span class="nav-icon" aria-hidden="true">聴</span><span>学习</span>
+        </button>
+        <button class="nav-item" data-route="review" aria-label="复习">
+          <span class="nav-icon" aria-hidden="true">↻</span><span>复习</span>
+        </button>
+        <button class="nav-item" data-route="grammar" aria-label="语法">
+          <span class="nav-icon" aria-hidden="true">文</span><span>语法</span>
+        </button>
+        <button class="nav-item" data-route="library" aria-label="句子库">
+          <span class="nav-icon" aria-hidden="true">冊</span><span>句子库</span>
+        </button>
+        <button class="nav-item" data-route="words" aria-label="词典">
+          <span class="nav-icon" aria-hidden="true">辞</span><span>词典</span>
+        </button>
+        <button class="nav-item" data-route="readings" aria-label="原文阅读">
+          <span class="nav-icon" aria-hidden="true">読</span><span>阅读</span>
+        </button>
+        <button class="nav-item" data-route="records" aria-label="学习记录">
+          <span class="nav-icon" aria-hidden="true">録</span><span>记录</span>
+        </button>
+      </nav>
+      <button class="nav-item sidebar-settings" data-route="settings" aria-label="设置">
+        <span class="nav-icon" aria-hidden="true">⚙</span><span>设置</span>
+      </button>
+    </aside>
+
+    <header class="mobile-header">
+      <div class="brand compact"><span class="brand-mark" aria-hidden="true">句</span><strong>句读</strong></div>
+      <button class="icon-button" data-route="settings" aria-label="打开设置">⚙</button>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+      <section class="view is-active" data-view="home" aria-labelledby="home-title">
+        <div class="page-head home-head">
+          <div>
+            <p class="eyebrow" id="today-label">今天也从一句话开始</p>
+            <h1 id="home-title">把听见的日语，变成自己的表达。</h1>
+            <p class="lead">先听懂，再拆解；换一个场景，还能自然说出来。</p>
+          </div>
+          <button class="primary-button hero-action" id="continue-learning">继续学习 <span aria-hidden="true">→</span></button>
+        </div>
+
+        <div class="dashboard-grid">
+          <article class="summary-card progress-summary">
+            <div class="card-heading"><div><span class="subtle">当前阶段</span><h2 id="current-level">N5 基础</h2></div><span class="level-orbit" id="level-orbit">N5</span></div>
+            <div class="metric-row">
+              <div><strong id="today-count">0</strong><span>今日句子</span></div>
+              <div><strong id="mastered-count">0</strong><span>稳固掌握</span></div>
+              <div><strong id="due-count">0</strong><span>等待复习</span></div>
+            </div>
+          </article>
+          <article class="summary-card skills-card">
+            <div class="card-heading"><div><span class="subtle">能力轮廓</span><h2>理解正在积累</h2></div></div>
+            <div class="skill-bars" id="skill-bars">
+              <div class="skill-row"><span>听力</span><div class="bar"><i style="--value:0%"></i></div><b>0.0</b></div>
+              <div class="skill-row"><span>理解</span><div class="bar"><i style="--value:0%"></i></div><b>0.0</b></div>
+              <div class="skill-row"><span>表达</span><div class="bar"><i style="--value:0%"></i></div><b>0.0</b></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="section-heading"><div><span class="subtle">学习路径</span><h2>选择今天的难度</h2></div></div>
+        <div class="level-grid" id="level-grid" aria-live="polite"></div>
+
+        <div class="section-heading"><div><span class="subtle">最近接触</span><h2>语法线索</h2></div><button class="text-button" data-route="grammar">查看全部</button></div>
+        <div class="recent-list" id="recent-grammars"><div class="empty-inline">开始第一句后，这里会留下你的语法轨迹。</div></div>
+      </section>
+
+      <section class="view" data-view="learn" aria-labelledby="learn-title">
+        <div class="page-head compact-head">
+          <div><p class="eyebrow">听力优先 · 一次一个新点</p><h1 id="learn-title">先别看文字，听一遍。</h1></div>
+          <div class="head-actions"><button class="secondary-button compact" id="random-learning">随机一句</button><span class="soft-badge" id="learn-level-badge">N5</span><span class="step-count" id="learn-step-count">准备中</span></div>
+        </div>
+        <div id="learn-stage" class="lesson-stage" aria-live="polite"></div>
+      </section>
+
+      <section class="view" data-view="review" aria-labelledby="review-title">
+        <div class="page-head compact-head">
+          <div><p class="eyebrow">换一句，再认一次</p><h1 id="review-title">复习表达，不背答案。</h1></div>
+          <span class="soft-badge" id="review-due-label">到期 0</span>
+        </div>
+        <div class="mode-switch" role="group" aria-label="复习题型">
+          <button class="chip is-active" data-review-mode="listening">听音判断</button>
+          <button class="chip" data-review-mode="recall">看中文回想</button>
+          <button class="chip" data-review-mode="grammar">句式识别</button>
+        </div>
+        <div id="review-stage" class="review-stage" aria-live="polite"></div>
+      </section>
+
+      <section class="view" data-view="grammar" aria-labelledby="grammar-title">
+        <div class="page-head compact-head">
+          <div><p class="eyebrow">表达之间有联系</p><h1 id="grammar-title">语法不是规则清单。</h1></div>
+        </div>
+        <div class="filter-bar">
+          <div class="level-tabs" id="grammar-level-tabs" role="group" aria-label="语法等级">
+            <button class="chip is-active" data-level="">全部</button>
+            <button class="chip" data-level="N5">N5</button><button class="chip" data-level="N4">N4</button>
+            <button class="chip" data-level="N3">N3</button><button class="chip" data-level="N2">N2</button>
+            <button class="chip" data-level="N1">N1</button>
+          </div>
+          <label class="search-field"><span class="sr-only">搜索语法</span><input id="grammar-search" type="search" placeholder="搜索语法或意义"><span aria-hidden="true">⌕</span></label>
+        </div>
+        <div class="grammar-grid" id="grammar-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="view" data-view="library" aria-labelledby="library-title">
+        <div class="page-head compact-head">
+          <div><p class="eyebrow">6120句 · N5至N1</p><h1 id="library-title">在句子里查找表达。</h1></div>
+          <button class="secondary-button" data-route="readings">进入原文阅读</button>
+        </div>
+        <form class="library-filters" id="library-filters">
+          <label class="search-field wide"><span class="sr-only">搜索句子</span><input id="library-search" type="search" placeholder="搜索日文、假名或中文"><span aria-hidden="true">⌕</span></label>
+          <label><span class="sr-only">等级</span><select id="library-level"><option value="">所有等级</option><option>N5</option><option>N4</option><option>N3</option><option>N2</option><option>N1</option></select></label>
+          <label><span class="sr-only">类型</span><select id="library-kind"><option value="">所有类型</option><option value="core">核心句</option><option value="variant">固定变体</option><option value="real">场景扩展</option><option value="personal">个性模板</option></select></label>
+          <button class="secondary-button" type="submit">筛选</button>
+        </form>
+        <div class="library-meta"><span id="library-total">0 个句子</span><span class="draft-note">内容状态：草稿</span></div>
+        <div class="sentence-list" id="sentence-list" aria-live="polite"></div>
+        <div class="pagination" id="library-pagination"></div>
+      </section>
+
+      <section class="view" data-view="words" aria-labelledby="words-title">
+        <div class="page-head compact-head">
+          <div><p class="eyebrow">JMdict · KANJIDIC2 · 本地查询</p><h1 id="words-title">从句子进入词语。</h1></div>
+        </div>
+        <form class="library-filters word-filters" id="word-filters">
+          <label class="search-field wide"><span class="sr-only">搜索词语</span><input id="word-search" type="search" placeholder="搜索日文、假名、中文或英文释义"><span aria-hidden="true">⌕</span></label>
+          <label class="toggle-row compact-toggle"><span><b>优先常用词</b><small>隐藏大量低频词条</small></span><input id="word-common" type="checkbox"><i aria-hidden="true"></i></label>
+          <button class="secondary-button" type="submit">查词</button>
+        </form>
+        <div class="library-meta"><span id="word-total">0 个词条</span><span class="draft-note">中文教学释义会标注来源</span></div>
+        <div class="word-list" id="word-list" aria-live="polite"></div>
+        <div class="pagination" id="word-pagination"></div>
+
+        <section class="analyzer-card" aria-labelledby="analyzer-title">
+          <div><span class="subtle">句子工具</span><h2 id="analyzer-title">拆解不懂的日文句子</h2><p>按本地词典切分句子，给出原形、读音、词性和直译线索。</p></div>
+          <label class="field-label">日文句子<textarea id="analyzer-input" maxlength="500" rows="3" placeholder="例如：今日は図書館で本を読みます。"></textarea></label>
+          <button class="primary-button" id="analyze-button" type="button">拆解句子</button>
+          <div class="analysis-result" id="analysis-result" aria-live="polite"></div>
+        </section>
+      </section>
+
+      <section class="view" data-view="readings" aria-labelledby="readings-title">
+        <div class="page-head compact-head">
+          <div><p class="eyebrow">青空文库 · 14,000句原文</p><h1 id="readings-title">把课程带进真实阅读。</h1></div>
+          <button class="secondary-button" id="show-reading-bookmarks">我的书签</button>
+        </div>
+        <div class="reading-work-grid" id="reading-work-grid" aria-live="polite"></div>
+        <form class="library-filters reading-filters" id="reading-filters">
+          <label class="search-field wide"><span class="sr-only">搜索阅读句</span><input id="reading-search" type="search" placeholder="搜索原文、假名、作品或作者"><span aria-hidden="true">⌕</span></label>
+          <label><span class="sr-only">作品</span><select id="reading-work"><option value="">所有作品</option></select></label>
+          <button class="secondary-button" type="submit">筛选</button>
+        </form>
+        <div class="library-meta"><span id="reading-total">0 个阅读句</span><span class="draft-note">原文保留来源 · 译文待审校</span></div>
+        <div class="sentence-list reading-list" id="reading-list" aria-live="polite"></div>
+        <div class="pagination" id="reading-pagination"></div>
+      </section>
+
+      <section class="view" data-view="records" aria-labelledby="records-title">
+        <div class="page-head compact-head">
+          <div><p class="eyebrow">每一次见面都会留下记录</p><h1 id="records-title">我的学习记录。</h1></div>
+        </div>
+        <div class="record-summary" id="record-summary" aria-live="polite"></div>
+        <div class="filter-bar">
+          <div class="level-tabs" id="record-level-tabs" role="group" aria-label="记录等级筛选">
+            <button class="chip is-active" data-record-level="">全部</button><button class="chip" data-record-level="N5">N5</button><button class="chip" data-record-level="N4">N4</button><button class="chip" data-record-level="N3">N3</button><button class="chip" data-record-level="N2">N2</button><button class="chip" data-record-level="N1">N1</button>
+          </div>
+        </div>
+        <div class="section-heading"><div><span class="subtle">核心句与扩展句作为一个单元</span><h2>单元掌握程度</h2></div></div>
+        <div class="unit-record-list" id="unit-record-list"></div>
+        <div class="section-heading"><div><span class="subtle">最近出现</span><h2>句子接触记录</h2></div></div>
+        <div class="sentence-list" id="recent-sentence-records"></div>
+      </section>
+
+      <section class="view" data-view="settings" aria-labelledby="settings-title">
+        <div class="page-head compact-head">
+          <div><p class="eyebrow">让学习适合你的节奏</p><h1 id="settings-title">设置</h1></div>
+        </div>
+        <div class="settings-layout">
+          <section class="settings-card" aria-labelledby="sound-settings-title">
+            <div class="settings-heading"><span class="settings-icon" aria-hidden="true">音</span><div><h2 id="sound-settings-title">声音与显示</h2><p>使用设备内置的日语语音。</p></div></div>
+            <label class="field-label">日语语音<select id="voice-select"><option value="">正在读取语音…</option></select></label>
+            <label class="field-label">播放速度<select id="speed-select"><option value="0.75">0.75 × 慢速</option><option value="1">1.0 × 标准</option><option value="1.25">1.25 × 稍快</option></select></label>
+            <label class="field-label">假名显示<select id="furigana-select"><option value="always">始终显示</option><option value="tap">点击后显示</option><option value="never">始终隐藏</option></select></label>
+          </section>
+          <section class="settings-card" aria-labelledby="study-settings-title">
+            <div class="settings-heading"><span class="settings-icon" aria-hidden="true">進</span><div><h2 id="study-settings-title">学习节奏</h2><p>选择课程阶段和每日目标。</p></div></div>
+            <label class="field-label">当前等级<select id="level-select"><option>N5</option><option>N4</option><option>N3</option><option>N2</option><option>N1</option></select></label>
+            <label class="field-label">每日目标<select id="daily-target"><option value="5">5句 · 轻松</option><option value="10">10句 · 标准</option><option value="20">20句 · 集中</option></select></label>
+            <label class="field-label">FSRS目标记忆率<select id="retention-select"><option value="0.85">85% · 复习较少</option><option value="0.9">90% · 平衡</option><option value="0.95">95% · 复习较多</option></select></label>
+            <label class="toggle-row"><span><b>界面动画</b><small>关闭后立即减少动态效果</small></span><input id="animation-toggle" type="checkbox" checked><i aria-hidden="true"></i></label>
+          </section>
+          <section class="settings-card danger-card" aria-labelledby="data-settings-title">
+            <div class="settings-heading"><span class="settings-icon" aria-hidden="true">記</span><div><h2 id="data-settings-title">学习记录</h2><p>重置只会清除学习进度，不会删除课程、阅读或词典内容。</p></div></div>
+            <div class="dialog-actions"><button class="secondary-button" id="logout-account">退出账号</button><button class="danger-button" id="reset-progress">重置学习进度</button></div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <nav class="mobile-nav" aria-label="手机主导航">
+      <button class="nav-item is-active" data-route="home"><span aria-hidden="true">⌂</span><small>首页</small></button>
+      <button class="nav-item" data-route="learn"><span aria-hidden="true">聴</span><small>学习</small></button>
+      <button class="nav-item" data-route="review"><span aria-hidden="true">↻</span><small>复习</small></button>
+      <button class="nav-item" data-route="grammar"><span aria-hidden="true">文</span><small>语法</small></button>
+      <button class="nav-item" data-route="library"><span aria-hidden="true">冊</span><small>句库</small></button>
+      <button class="nav-item" data-route="words"><span aria-hidden="true">辞</span><small>词典</small></button>
+      <button class="nav-item" data-route="records"><span aria-hidden="true">録</span><small>记录</small></button>
+    </nav>
+  </div>
+
+  <dialog id="detail-dialog" class="detail-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-head"><div><span class="soft-badge" id="dialog-badge">句子</span><h2 id="dialog-title">句子详情</h2></div><button class="icon-button" id="dialog-close" aria-label="关闭详情">×</button></div>
+    <div id="dialog-content"></div>
+  </dialog>
+
+  <div class="loading-layer" id="loading-layer" hidden><div class="loader" aria-label="正在加载"><i></i><i></i><i></i></div></div>
+  <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>
+

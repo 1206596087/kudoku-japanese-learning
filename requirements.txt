@@ -1,0 +1,12 @@
+fastapi==0.121.1
+uvicorn==0.38.0
+httpx==0.28.1
+pytest==9.0.1
+sudachipy==0.6.10
+sudachidict_core==20251022
+beautifulsoup4==4.14.3
+fsrs==6.3.2
+zstandard==0.25.0
+fsrs==6.3.2
+zstandard==0.25.0
+

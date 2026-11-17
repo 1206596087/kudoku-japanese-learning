@@ -1,0 +1,11 @@
+{
+  "name": "句读 · 日语学习",
+  "short_name": "句读",
+  "description": "从听懂一句话开始，逐步掌握日语表达。",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f7f3",
+  "theme_color": "#f6f7f3",
+  "lang": "zh-CN"
+}
+

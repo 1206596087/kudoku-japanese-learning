@@ -1,0 +1,10 @@
+database/japanese_learning.sqlite3
+database/*.before-*.sqlite3
+database/.cache/
+.tmp/
+.venv/
+.wrangler/
+.dev.vars
+.env
+__pycache__/
+.pytest_cache/
