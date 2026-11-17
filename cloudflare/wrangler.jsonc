@@ -1,0 +1,28 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "kudoku",
+  "main": "src/worker.py",
+  "compatibility_date": "2026-11-17",
+  "compatibility_flags": ["python_workers"],
+  "workers_dev": true,
+  "assets": {
+    "directory": "../app/static/",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "d1_databases": [
+    {
+      "binding": "CONTENT_DB",
+      "database_name": "kudoku-content",
+      "database_id": "da05faaa-7ecf-4979-8663-7a3d9d7b1c06"
+    },
+    {
+      "binding": "USER_DB",
+      "database_name": "kudoku-user",
+      "database_id": "f5661c65-46eb-40e7-91b3-02cd40cfdf22"
+    }
+  ],
+  "observability": {
+    "enabled": true
+  }
+}

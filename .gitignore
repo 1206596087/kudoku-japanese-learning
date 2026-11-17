@@ -3,8 +3,12 @@ database/*.before-*.sqlite3
 database/.cache/
 .tmp/
 .venv/
+.venv-cloudflare/
+.venv-workers/
+python_modules/
 .wrangler/
 .dev.vars
 .env
+.python-version
 __pycache__/
 .pytest_cache/
