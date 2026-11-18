@@ -934,4 +934,13 @@ async def set_retention(payload: RetentionRequest, request: Request) -> dict[str
 
 @app.get("/{path:path}")
 async def frontend(path: str, request: Request) -> Response:
-    env=request.scope["env"]; response=await env.ASSETS.fetch(f"https://assets.local/{path or 'index.html'}"); body=await response.bytes(); return Response(content=body,status_code=response.status,headers=response.headers)
+    env = request.scope["env"]
+    asset_path = path or "index.html"
+    # The local FastAPI app mounts files at /static/*, while a Workers static
+    # asset binding exposes the configured directory at its root. Keep one HTML
+    # build working in both environments by translating that prefix here.
+    if asset_path.startswith("static/"):
+        asset_path = asset_path.removeprefix("static/")
+    response = await env.ASSETS.fetch(f"https://assets.local/{asset_path}")
+    body = await response.bytes()
+    return Response(content=body, status_code=response.status, headers=response.headers)
