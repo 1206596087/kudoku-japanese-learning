@@ -130,6 +130,19 @@ http://127.0.0.1:8000
 
 第三方署名、许可和GitHub发布注意事项见 `THIRD_PARTY_DATA.md`。数据库文件约200MB，超过GitHub普通单文件100MB限制，应使用Release附件、Git LFS，或仅提交可重复构建的导入脚本。
 
+## Cloudflare Workers + D1 部署
+
+云端版本位于 `cloudflare/`，使用一个Python Worker、一个只读内容D1和一个学习记录D1。当前私人部署地址为 <https://jp.nameapp.uk>。
+
+重新发布前先确认已经执行 `wrangler login`，然后在项目根目录运行：
+
+```powershell
+cd cloudflare
+uv run pywrangler deploy
+```
+
+`cloudflare/scripts/export_d1.py` 可把本地SQLite按内容与用户记录拆成D1导入文件；生成的SQL位于忽略目录，不应提交Git。云端PBKDF2受Web Crypto限制使用100,000轮，并配合强密码、HTTPS和30天HttpOnly会话。建议需要进一步隐藏站点时再开启Cloudflare Access。
+
 ## 测试
 
 ```powershell
@@ -139,5 +152,5 @@ database\.venv\Scripts\python.exe database\validate_database.py
 
 API测试会复制数据库到临时目录，不会污染正式学习进度。
 
-当前真实限制：中文词义与构词记忆线索是机器辅助内容，界面会标记“待审校”，不能冒充人工词典；N1目前仍只有10个起步语法家族；青空导读和文学提示是学习辅助草稿，尚无逐句人工译文；结构拆解已支持分句、连接词和日语顺序直译线索，但汉译日与深层语义消歧仍留待后续实现。私人账号目前是单账号设计，适合个人部署，不是多租户系统。
+当前真实限制：中文词义与构词记忆线索是机器辅助内容，界面会标记“待审校”，不能冒充人工词典；N1目前仍只有10个起步语法家族；青空导读和文学提示是学习辅助草稿，尚无逐句人工译文；本地结构分析器使用Sudachi，Cloudflare版本为较轻量的词典贪心拆分，两者都不能替代复杂语境消歧或汉译日。私人账号目前是单账号设计，适合个人部署，不是多租户系统。
 

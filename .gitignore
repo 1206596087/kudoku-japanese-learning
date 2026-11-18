@@ -7,6 +7,7 @@ database/.cache/
 .venv-workers/
 python_modules/
 .wrangler/
+cloudflare/migrations/generated/
 .dev.vars
 .env
 .python-version
